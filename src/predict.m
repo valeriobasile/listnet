@@ -11,11 +11,10 @@ drg = load(drgfile);
 list_id = drg(:,1);
 X = drg(:,2:size(drg,2)-1);
 
-disp('cross-validation...')
 z =  X * omega.omega;
 
 # add a little random to avoid ties
-r = @(i) (i+rand*0.02-0.01)
+r = @(i) (i+rand*0.02-0.01);
 
 for id = unique(list_id)'
     indexes = find(list_id==id);

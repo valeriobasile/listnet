@@ -10,13 +10,13 @@ more off;
 % pararrayfun is in the 'general' package
 pkg load general;
 
-% load constants
-source global.m;
-
 % read arguments on the command line
 arg_list = argv ();
 training_file = arg_list{1,1};
 model_file = arg_list{2,1};
+
+% load constants
+source "global.m";
 
 % load training dataset
 disp('loading training data...')

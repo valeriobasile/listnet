@@ -22,7 +22,10 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
             fprintf("computing cost... ")
         end
 
-        J = listwise_cost(y,z, list_id);
+        % with regularization
+        J = listwise_cost(y,z, list_id) + ((z.*z)'.*LAMBDA);
+        % without regularization
+        %J = listwise_cost(y,z, list_id);
         
         % gradient
         if quiet == false
@@ -32,8 +35,8 @@ function [omega, avg_J] = trainNN(list_id, X, y, T, e, quiet=false)
         grad = listnet_gradient(X, y, z, list_id);
         
         % parameter update
-        omega = omega - ((e .* sum(grad',2)) * LAMBDA);
-
+        omega = omega - (e .* sum(grad',2));
+        
         if quiet == false
             fprintf("\n")
         end
