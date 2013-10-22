@@ -1,4 +1,3 @@
-#! /net/aistaff/basile/local/bin/octave -qf
 # command line arguments:
 # predict.m model drgfile
 

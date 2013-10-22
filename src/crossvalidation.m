@@ -1,5 +1,3 @@
-#!/net/aistaff/basile/local/bin/octave -qf
-%
 % usage: # train.m test_set model
 
 % suppress output
