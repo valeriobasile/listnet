@@ -1,4 +1,4 @@
-#!/usr/bin/env "octave -qf"
+#!/usr/bin/env octave
 % train a linear network using the examples provided in the training_set file
 % and writes the model on output_model
 %
@@ -16,7 +16,8 @@ training_file = arg_list{1,1};
 model_file = arg_list{2,1};
 
 % load constants
-source "global.m";
+addpath(".")
+source "./global.m";
 
 % load training dataset
 disp('loading training data...')
@@ -32,4 +33,3 @@ omega = trainNN(list_id, X, y, T, e);
 training_time = toc();
 disp(sprintf('finished training, time elapsed: %d seconds', training_time))
 save(model_file, "omega");
-

@@ -1,4 +1,6 @@
-% usage: # train.m test_set model
+#!/usr/bin/env octave
+% command line arguments:
+% usage: cross-validation.m test_set model
 
 % suppress output
 more off;
@@ -34,7 +36,7 @@ for i = (1:size(unique(list_id_dev)))
     id = list_id_dev(i);
     y_rank = ranks(y_dev(find(list_id_dev == list_id_dev(i)),:));
     z = ranks(z_dev(find(list_id_dev == list_id_dev(i)),:));
-    
+
     if size(y_rank,1)==1
         tau = tau + 1;
     else

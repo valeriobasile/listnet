@@ -1,6 +1,8 @@
-# command line arguments:
-# predict.m model drgfile
+#!/usr/bin/env octave
+% command line arguments:
+% predict.m model feature_file
 
+% suppress output
 more off;
 
 omega = load(argv(){1});
@@ -23,4 +25,3 @@ ranks = a';
 
 
 dlmwrite(sprintf('%s.pred', drgfile), ranks)
-
