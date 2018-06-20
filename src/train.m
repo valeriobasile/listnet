@@ -14,6 +14,9 @@ pkg load general;
 arg_list = argv ();
 training_file = arg_list{1,1};
 model_file = arg_list{2,1};
+if size(argv(),1) > 2
+    tmp_model_file = arg_list{3,1};
+end
 
 % load constants
 addpath(".")
@@ -29,7 +32,12 @@ y = data(:,size(data,2));
 % launch the training routine
 disp(sprintf('training, %d iteration, %d examples, learning rate %f...', T, size(X,1), e))
 tic();
-omega = trainNN(list_id, X, y, T, e);
+if size(argv(),1) > 2
+    disp(sprintf('initializing from model file %s', tmp_model_file))
+    omega = trainNN(list_id, X, y, T, e, quiet=false, init=tmp_model_file);
+else
+    omega = trainNN(list_id, X, y, T, e, quiet=false);
+end
 training_time = toc();
 disp(sprintf('finished training, time elapsed: %d seconds', training_time))
 save(model_file, "omega");
